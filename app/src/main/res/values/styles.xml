@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">@color/viber_light_purple</item> <!-- Ваш цвет -->
+        <item name="colorPrimaryDark">@color/viber_purple</item> <!-- Темный цвет для статус-бара -->
+        <item name="colorAccent">@color/viber_purple</item> <!-- Цвет акцента -->
+    </style>
+</resources>

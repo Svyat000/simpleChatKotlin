@@ -59,4 +59,7 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 
     implementation (libs.androidx.lifecycle.runtime.ktx)
+
+    implementation (libs.picasso)
+
 }

@@ -2,4 +2,12 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="viber_purple">#7A4B8A</color> <!-- Фиолетовый -->
+    <color name="viber_light_purple">#E5C8E0</color> <!-- Светлый фиолетовый -->
+    <color name="viber_blue">#3D5B99</color> <!-- Синий -->
+    <color name="viber_light_blue">#A4C8E1</color> <!-- Светлый синий -->
+    <color name="viber_green">#4CAF50</color> <!-- Зеленый -->
+    <color name="viber_red">#F44336</color> <!-- Красный -->
+    <color name="viber_gray">#BDBDBD</color> <!-- Серый -->
 </resources>

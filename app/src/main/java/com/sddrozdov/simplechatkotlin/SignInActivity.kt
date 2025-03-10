@@ -26,14 +26,10 @@ class SignInActivity : AppCompatActivity() {
 
         binding.googleSignIn.setOnClickListener{
             googleSignInAccountHelper.launchCredentialManager()
-
         }
-
     }
 
     fun uiUpdate(user: FirebaseUser?) {
-
     }
-
 
 }
