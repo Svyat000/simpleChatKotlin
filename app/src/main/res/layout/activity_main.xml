@@ -5,16 +5,19 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".activity.MainActivity">
 
-    <TextView
-        android:id="@+id/messageView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="16dp"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="409dp"
+        android:layout_height="536dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
         app:layout_constraintBottom_toTopOf="@+id/editTextText"
-        app:layout_constraintEnd_toEndOf="@+id/editTextText"
-        app:layout_constraintStart_toStartOf="@+id/editTextText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/materialToolbar" />
 
     <Button
@@ -35,6 +38,7 @@
         android:layout_marginBottom="16dp"
         android:autofillHints=""
         android:ems="10"
+        android:hint="Message"
         android:inputType="text"
         android:maxWidth="300dp"
         app:layout_constraintBottom_toTopOf="@+id/sendMessage"

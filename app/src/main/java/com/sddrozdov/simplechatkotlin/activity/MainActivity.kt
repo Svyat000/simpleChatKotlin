@@ -1,4 +1,4 @@
-package com.sddrozdov.simplechatkotlin
+package com.sddrozdov.simplechatkotlin.activity
 
 import android.content.Intent
 import android.graphics.drawable.BitmapDrawable
@@ -10,6 +10,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
@@ -18,7 +19,9 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import com.sddrozdov.simplechatkotlin.R
 import com.sddrozdov.simplechatkotlin.accountHelper.GoogleSignInAccountHelper
+import com.sddrozdov.simplechatkotlin.adapters.MessageAdapter
 import com.sddrozdov.simplechatkotlin.databinding.ActivityMainBinding
 import com.squareup.picasso.Picasso
 import kotlin.concurrent.thread
@@ -29,6 +32,8 @@ class MainActivity : AppCompatActivity() {
     private val binding get() = _binding ?: throw IllegalStateException("Binding must not be null")
 
     private lateinit var auth: FirebaseAuth
+
+    private lateinit var adapter: MessageAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,6 +58,13 @@ class MainActivity : AppCompatActivity() {
         }
         onChangeListener(myRef)
 
+        init()
+    }
+
+    private fun init() = with(binding) {
+        adapter = MessageAdapter()
+        recyclerView.layoutManager = LinearLayoutManager(this@MainActivity)
+        recyclerView.adapter = adapter
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -63,7 +75,7 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.singOut) {
             GoogleSignInAccountHelper.AuthManager.signOut(this)
-            val intent = Intent(this,SignInActivity::class.java)
+            val intent = Intent(this, SignInActivity::class.java)
             startActivity(intent)
         }
         auth.signOut()
@@ -77,15 +89,13 @@ class MainActivity : AppCompatActivity() {
             object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     binding.apply {
-                        messageView.append("\n")
-                        messageView.append(snapshot.value.toString())
+                        TODO()
                     }
                 }
 
                 override fun onCancelled(error: DatabaseError) {
                     TODO("Not yet implemented")
                 }
-
             }
         )
     }

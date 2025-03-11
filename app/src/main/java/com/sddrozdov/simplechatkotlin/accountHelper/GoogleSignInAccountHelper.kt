@@ -17,9 +17,9 @@ import com.google.android.libraries.identity.googleid.GoogleIdTokenCredential
 import com.google.android.libraries.identity.googleid.GoogleIdTokenCredential.Companion.TYPE_GOOGLE_ID_TOKEN_CREDENTIAL
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
-import com.sddrozdov.simplechatkotlin.MainActivity
+import com.sddrozdov.simplechatkotlin.activity.MainActivity
 import com.sddrozdov.simplechatkotlin.R
-import com.sddrozdov.simplechatkotlin.SignInActivity
+import com.sddrozdov.simplechatkotlin.activity.SignInActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -105,7 +105,7 @@ class GoogleSignInAccountHelper(private val signInActivity: SignInActivity) {
     }
     private fun checkAuthStatus(){
         if(auth.currentUser != null){
-            val i = Intent(signInActivity,MainActivity::class.java)
+            val i = Intent(signInActivity, MainActivity::class.java)
             signInActivity.startActivity(i)
             signInActivity.finish()
         }

@@ -1,4 +1,4 @@
-package com.sddrozdov.simplechatkotlin
+package com.sddrozdov.simplechatkotlin.activity
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseUser
 import com.sddrozdov.simplechatkotlin.accountHelper.GoogleSignInAccountHelper
 import com.sddrozdov.simplechatkotlin.databinding.ActivitySignInBinding
-
 
 class SignInActivity : AppCompatActivity() {
 
@@ -31,5 +30,4 @@ class SignInActivity : AppCompatActivity() {
 
     fun uiUpdate(user: FirebaseUser?) {
     }
-
 }
