@@ -23,6 +23,7 @@ import com.sddrozdov.simplechatkotlin.R
 import com.sddrozdov.simplechatkotlin.accountHelper.GoogleSignInAccountHelper
 import com.sddrozdov.simplechatkotlin.adapters.MessageAdapter
 import com.sddrozdov.simplechatkotlin.databinding.ActivityMainBinding
+import com.sddrozdov.simplechatkotlin.models.User
 import com.squareup.picasso.Picasso
 import kotlin.concurrent.thread
 
@@ -54,10 +55,16 @@ class MainActivity : AppCompatActivity() {
         val myRef = database.getReference("messages")
 
         binding.sendMessage.setOnClickListener {
-            myRef.setValue(binding.editTextText.text.toString())
+            val user = User(
+                name = auth.currentUser?.displayName ?: "Anonymous",
+                message = binding.editTextText.text.toString()
+
+            )
+            val newMessageRef = myRef.push()
+            newMessageRef.setValue(user)
+            binding.editTextText.text.clear()
         }
         onChangeListener(myRef)
-
         init()
     }
 
@@ -88,9 +95,12 @@ class MainActivity : AppCompatActivity() {
         dataBaseRef.addValueEventListener(
             object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    binding.apply {
-                        TODO()
+                    val list = ArrayList<User>()
+                    for (i in snapshot.children) {
+                        val user = i.getValue(User::class.java)
+                        if (user != null) list.add(user)
                     }
+                    adapter.submitList(list)
                 }
 
                 override fun onCancelled(error: DatabaseError) {
